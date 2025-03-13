@@ -1,0 +1,37 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Distribution / packaging
+.Python
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Environment variables
+.env
+
+# PyInstaller
+*.spec
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Configuration files
+config.json
+license_info.json  # If you don't want to share this file
