@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox, scrolledtext
 import json
 import os
+import sys
 from datetime import datetime, timedelta
 import re
 import base64
@@ -9,19 +10,38 @@ from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 
+def resource_path(relative_path):
+    """Get absolute path to resource, works for dev and for PyInstaller"""
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    
+    return os.path.join(base_path, relative_path)
+
 class LicenseManagerApp:
     # This is a fixed salt used for key derivation - must match the validator
     SALT = b'TAT_LICENSE_SYSTEM_SALT'
     
     # This is a fixed password used for all licenses - must match the validator
-    SECRET_PASSWORD = b'eng.mohamed.maher2016@gmail.com'
+    SECRET_PASSWORD = b'900009888766776755566544535kjhdefaefweefwe'
     
     def __init__(self, root):
         self.root = root
         self.root.title(" TAT License Keygen v1.0")
         self.root.geometry("600x700")
         self.root.minsize(600, 700)
-        self.root.iconbitmap("icon.ico")
+        
+        # Set icon with error handling
+        try:
+            icon_path = resource_path("icon.ico")
+            if os.path.exists(icon_path):
+                self.root.iconbitmap(icon_path)
+        except Exception as e:
+            # If icon fails to load, continue without it
+            print(f"Warning: Could not load icon: {e}")
+            pass
         # Set dark theme
         self.style = ttk.Style()
         self.set_dark_theme()

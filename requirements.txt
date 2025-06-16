@@ -1,0 +1,5 @@
+# TAT License Manager Requirements
+PyInstaller>=6.0.0
+cryptography>=40.0.0
+cffi>=1.15.0
+pycparser>=2.20
